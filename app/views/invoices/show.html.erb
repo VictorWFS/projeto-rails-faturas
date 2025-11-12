@@ -2,6 +2,27 @@
 
 <%= render @invoice %>
 
+<table class="invoice-items-table">
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th>Quantidade</th>
+      <th>Preço Unitário</th>
+      <th>Total do Item</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invoice.line_items.each do |item| %>
+      <tr>
+        <td><%= item.description %></td>
+        <td><%= item.quantity %></td>
+        <td><%= number_to_currency(item.unit_price) %></td>
+        <td><%= number_to_currency(item.quantity * item.unit_price) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <div>
   <%= link_to "Edit this invoice", edit_invoice_path(@invoice) %> |
   <%= link_to "Back to invoices", invoices_path %>
