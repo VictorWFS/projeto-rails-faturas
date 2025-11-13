@@ -9,10 +9,10 @@
     <%= invoice.due_date %>
   </div>
 
-  <div>
-    <strong>Total amount:</strong>
-    <%= invoice.total_amount %>
-  </div>
+  <p>
+    <strong>Total da Fatura:</strong>
+    <%= number_to_currency(@invoice.calculated_total) %>
+  </p>
 
   <div>
     <strong>Status:</strong>
